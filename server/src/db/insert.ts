@@ -1,4 +1,4 @@
-import { getDatabase } from '.';
+import { closeConnection, getDatabase } from '.';
 import { Blog } from '../types';
 export async function insertBlogs(blogs: Blog[]) {
     try {
@@ -22,6 +22,8 @@ export async function insertBlogs(blogs: Blog[]) {
       console.log(`Insertion complete. Inserted: ${insertedCount}, Skipped: ${skippedCount}`);
     } catch (error) {
       console.error('Error inserting blogs:', error);
+    } finally {
+      await closeConnection();
     }
 }
 

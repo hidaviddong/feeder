@@ -1,4 +1,4 @@
-import { getDatabase } from ".";
+import { closeConnection, getDatabase } from ".";
 
 async function initDB(){
     try {
@@ -10,6 +10,8 @@ async function initDB(){
         console.log('Database initialized successfully');
     } catch (error) {
         console.error('Error initializing database:', error);
+    } finally {
+        await closeConnection();
     }
 }
 

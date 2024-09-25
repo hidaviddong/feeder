@@ -12,6 +12,9 @@ async function main() {
   }
 }
 
+// run the main function immediately
+main()
+
 Cron('0 0 */6 * * *', () => {
   main()
 });
