@@ -1,6 +1,6 @@
 import { Cluster }from 'puppeteer-cluster'
 import { scraperProtocolLabs,scraperEthereum,scraperCoinbase } from './scripts';
-import { COINBASE_URL, ETHEREUM_URL, PROTOCOL_LABS_URL } from './types';
+import { Blog, COINBASE_URL, ETHEREUM_URL, PROTOCOL_LABS_URL } from './types';
 
 async function scraperStart(){
     const cluster = await Cluster.launch({
@@ -8,7 +8,7 @@ async function scraperStart(){
         maxConcurrency: 3,
         monitor:true
       });
-     const blogs = []
+     const blogs:Blog[] = []
       await cluster.task(async ({ page, data: url }) => {
         switch (url) {
             case PROTOCOL_LABS_URL:
