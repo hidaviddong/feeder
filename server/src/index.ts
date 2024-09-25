@@ -8,16 +8,20 @@ async function scraperStart(){
         maxConcurrency: 3,
         monitor:true
       });
+     const blogs = []
       await cluster.task(async ({ page, data: url }) => {
         switch (url) {
             case PROTOCOL_LABS_URL:
-                await scraperProtocolLabs(page, url);
+                const protocolLabsBlogs =  await scraperProtocolLabs(page, url);
+                blogs.push(...protocolLabsBlogs)
                 break;
             case ETHEREUM_URL:
-                await scraperEthereum(page, url);
+                const ethereumBlogs = await scraperEthereum(page, url);
+                blogs.push(...ethereumBlogs)
                 break;
             case COINBASE_URL:
-                await scraperCoinbase(page, url);
+                const coinbaseBlogs = await scraperCoinbase(page, url);
+                blogs.push(...coinbaseBlogs)
                 break;
             default:
                 break;
@@ -30,10 +34,13 @@ async function scraperStart(){
     
       await cluster.idle();
       await cluster.close();
+
+      return blogs
 }
 
-scraperStart().then(() => {
-    console.log("Scraper Done")
-}).catch((err) => {
-    console.log("Scraper Error", err)
-})  
+try {
+    const res = await scraperStart()
+    console.log(res)
+} catch (error) {
+    console.log("Scraper Error", error)
+}
