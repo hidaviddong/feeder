@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "server",
+      "script": "npm",
+      "args": "run start:server"
+    },
+    {
+      "name": "scheduler",
+      "script": "npm",
+      "args": "run start:scheduler"
+    }
+  ]
+}
