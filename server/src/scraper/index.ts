@@ -5,7 +5,7 @@ import {scraperEthereum} from './ethereum'
 import {scraperCoinbase} from './coinbase'
 
   
-export async function scraperStart(){
+export async function startScraper(){
     const cluster = await Cluster.launch({
         concurrency: Cluster.CONCURRENCY_CONTEXT,
         maxConcurrency: 3,

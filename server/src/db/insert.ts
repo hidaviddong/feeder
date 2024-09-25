@@ -1,14 +1,9 @@
-import 'dotenv/config'
-import {MongoClient} from 'mongodb'
+import { getDatabase } from '.';
 import { Blog } from '../types';
-
 export async function insertBlogs(blogs: Blog[]) {
-    const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/blogdb';
-    const client = new MongoClient(uri);
     try {
-      await client.connect();
-      const database = client.db("blogdb");
-      const collection = database.collection('blogs');
+      const db = await getDatabase();
+      const collection = db.collection('blogs');
       let insertedCount = 0;
       let skippedCount = 0;
   
@@ -27,8 +22,6 @@ export async function insertBlogs(blogs: Blog[]) {
       console.log(`Insertion complete. Inserted: ${insertedCount}, Skipped: ${skippedCount}`);
     } catch (error) {
       console.error('Error inserting blogs:', error);
-    } finally {
-      await client.close();
     }
 }
 

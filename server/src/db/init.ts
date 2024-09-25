@@ -1,12 +1,8 @@
-import {MongoClient} from 'mongodb';
-import 'dotenv/config'
+import { getDatabase } from ".";
 
-const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/your_database'
 async function initDB(){
-    const client = new MongoClient(uri)
     try {
-        await client.connect()
-        const db = client.db('blogdb')
+        const db = await getDatabase()
         await db.createCollection('blogs')
         await db.collection('blogs').createIndex({ title: 1 }, { unique: true });
         await db.collection('blogs').createIndex({ author: 1 });
@@ -14,8 +10,6 @@ async function initDB(){
         console.log('Database initialized successfully');
     } catch (error) {
         console.error('Error initializing database:', error);
-    } finally {
-        await client.close()
     }
 }
 
