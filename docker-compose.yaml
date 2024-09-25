@@ -10,21 +10,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-  
-  backend:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    container_name: backend
-    restart: always
-    ports:
-      - 4000:4000
-    depends_on:
-      - mongodb
-    environment:
-      - MONGO_URI=mongodb://root:example@mongodb:27017
-    volumes:
-      - ./server:/app
 
 volumes:
   mongodb_data:
