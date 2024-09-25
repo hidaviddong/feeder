@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "db:init":"npx tsx src/db/init.ts",
     "start": "npx tsx src/index.ts",
     "build": "tsc"
   },
