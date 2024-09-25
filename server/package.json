@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "npx tsx src/index.ts",
     "build": "tsc"
   },
   "keywords": [],
@@ -12,6 +13,10 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.6.1",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "puppeteer": "^23.4.0"
   }
 }
