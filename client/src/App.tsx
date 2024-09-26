@@ -1,9 +1,10 @@
-import Home from '@/pages/home'
-
+import BlogHeader from '@/components/blog-header'
+import BlogMain from '@/components/blog-main'
 export default function App() {
   return (
-    <div className="flex h-screen flex-col gap-4 justify-center items-center">
-      <Home/>
+    <div className="flex flex-col items-center justify-center p-6">
+      <BlogHeader />
+      <BlogMain />
     </div>
   )
 }

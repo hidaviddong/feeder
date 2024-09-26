@@ -20,25 +20,23 @@ const typeDefs = `#graphql
   }
 
   type Query {
-    blogs: [Blog!]!
-    blogsBySource: [BlogsBySource!]!
+    sources:[String!]!
+    blogs(source:String!):[Blog!]!
   }
 `;
 
 const resolvers = {
   Query: {
-    blogs: async () => {
+    sources:async ()=>{
       const db = await getDatabase();
-      return db.collection('blogs').find().toArray();
+      return db.collection('blogs').distinct('source');
     },
-    blogsBySource: async () => {
+    blogs: async (_, { source }) => {
       const db = await getDatabase();
-      const sources = await db.collection('blogs').distinct('source');
-      const result = await Promise.all(sources.map(async (source: string) => {
-          const blogs = await db.collection('blogs').find({ source }).toArray();
-          return { source, blogs };
-      }));
-      return result;
+      if (source === 'All Blogs') {
+        return db.collection('blogs').find().toArray();
+      }
+      return db.collection('blogs').find({ source }).toArray();
     },
   },
   Blog: {
