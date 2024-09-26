@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client'
 
 import App from './App.tsx'
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
+  uri: import.meta.env.VITE_BACKEND_URI,
   cache: new InMemoryCache()
 })
 
