@@ -8,3 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 export function sum(a: number, b: number) {
   return a + b
 }
+
+export const ALL_BLOGS = 'All Blogs'
