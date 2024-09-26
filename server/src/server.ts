@@ -22,6 +22,8 @@ const typeDefs = `#graphql
   type Query {
     blogs: [Blog!]!
     blogsBySource: [BlogsBySource!]!
+    sources:[String!]!
+    blogsBySpecificSource(source:String!):[Blog!]!
   }
 `;
 
@@ -39,6 +41,14 @@ const resolvers = {
           return { source, blogs };
       }));
       return result;
+    },
+    sources:async ()=>{
+      const db = await getDatabase();
+      return db.collection('blogs').distinct('source');
+    },
+    blogsBySpecificSource: async (_, { source }) => {
+      const db = await getDatabase();
+      return db.collection('blogs').find({ source }).toArray();
     },
   },
   Blog: {
