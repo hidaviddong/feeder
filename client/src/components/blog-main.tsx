@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/drawer"
 import { Button } from "@/components/ui/button"
 import { useState } from 'react';
+import BlogList from './blog-list';
 
 const GET_SOURCES = gql`
   query GetSources {
@@ -57,6 +58,7 @@ export default function BlogMain() {
             }
           </div>
         )}
+        <BlogList/>
         </main>
     )
   }
