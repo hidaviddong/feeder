@@ -87,6 +87,7 @@ graph TB
 
 ### Task 1: Data Scraper with Automation
 
++ PR: https://github.com/hidaviddong/feeder/pull/1
 + Tech stack: `Node.js`, `Puppeteer`, `MongoDB`, `GraphQL`
 + Description:
     - Use Puppeteer to scrape blog content
@@ -97,9 +98,10 @@ graph TB
 	- Provide data access via GraphQL API
 
 ### Task 2: Front-End Framework Optimization
-+ Tech stack: `React.js`, `TypeScript`, `TailwindCSS`, `Jotai`, `Vite`.
 
-- Description:
++ PR: https://github.com/hidaviddong/feeder/pull/2
++ Tech stack: `React.js`, `TypeScript`, `TailwindCSS`, `Jotai`, `Vite`.
++ Description:
     - Build with React.js, TypeScript, and Vite for type safety and fast development
 	- Style using TailwindCSS and shadcn/ui for customizable UI
 	- Manage complex state with Jotai
@@ -107,6 +109,8 @@ graph TB
 
 ### Task 3: Deployment and Scalability Strategy
 
++ PR: https://github.com/hidaviddong/feeder/pull/3
+  
 To scale the platform to support 500 blog sites and handle 1 million users:
 
 #### Overall Architecture
