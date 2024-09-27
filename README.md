@@ -1,6 +1,9 @@
 # Feeder
 
-Feeder is a web application with a client-server architecture. 
+![Shots 1x (14)](https://github.com/user-attachments/assets/1466ad94-85e8-4dcb-b947-4938892cdce4)
+
+[Feeder](https://feeder.daviddong.me) is a web application with a client-server architecture. 
+
 Follow these steps to set up and run the project.
 
 ## Prerequisites
