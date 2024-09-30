@@ -123,8 +123,7 @@ To scale the platform to support 500 blog sites and handle 1 million users:
 
 - Deploy the React application to a Content Delivery Network (CDN) for global distribution.
 - Scale the GraphQL server horizontally using Kubernetes to handle increased load.
-- Implement a caching layer (Redis) to reduce database load and improve response times.
-- Use a message queue (RabbitMQ) for asynchronous processing of scraping tasks.
+- Implement a caching layer to reduce database load and improve response times.
 - Implement rate limiting to prevent abuse.
 - Distribute scraping tasks across multiple worker nodes to handle 500 blog sites efficiently.
 
